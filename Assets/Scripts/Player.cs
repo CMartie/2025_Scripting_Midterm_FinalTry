@@ -10,29 +10,31 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             RaycastHit hit;
             if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit))
             {
                 if (hit.collider.tag == "Door")
                 {
-                    LockedDoor door = hit.collider.GetComponent<LockedDoor>();
-                    
-                    if (door.isDoorLocked == true)
+                    LockedDoor door = hit.collider.gameObject.GetComponent<LockedDoor>();
+
+                    if (door.keyColorRequired == KeyColor.Blue && hasBlueKey == true)
                     {
-                        //Open The Door
+                        door.OpenDoor();
+
                     }
-                    else 
+                    else if(door.keyColorRequired == KeyColor.Green && hasGreenKey == true)
                     {
-                        if ((door.keyColorRequired == KeyColor.Green && hasGreenKey) ||
-                            (door.keyColorRequired == KeyColor.Blue && hasGreenKey) ||
-                            (door.keyColorRequired == KeyColor.Red && hasRedKey))
-                        {
-                            //Open The Door
-                        }
+                        door.OpenDoor();
                     }
-                    
+                    else if(door.keyColorRequired == KeyColor.Red && hasRedKey == true)
+                    {
+                        door.OpenDoor();
+                    }
+
+
+
                 }
             }
         }
