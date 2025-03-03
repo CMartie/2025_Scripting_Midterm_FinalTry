@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public enum TargetType
 {
@@ -15,6 +16,7 @@ public class Target : MonoBehaviour
     public TargetType targetType;
     private Vector3 startingPosition;
     public float maxMovingTargetRange = 3f;
+    public float minMovingTargetRange = 1f;
 
     void Start()
     {
@@ -36,7 +38,7 @@ public class Target : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.tag == "Ballet")
+        if (other.gameObject.tag == "Bullet")
         {
             
             
@@ -47,8 +49,8 @@ public class Target : MonoBehaviour
             }
             else if(targetType == TargetType.Movable)
             {
-                float randomY = Random.Range(-maxMovingTargetRange, maxMovingTargetRange);
-                float randomZ = Random.Range(-maxMovingTargetRange, maxMovingTargetRange);
+                float randomY = Random.Range(minMovingTargetRange, maxMovingTargetRange);
+                float randomZ = Random.Range(minMovingTargetRange, maxMovingTargetRange);
 
                 transform.position = startingPosition + new Vector3(0f, randomY, randomZ);
             }
