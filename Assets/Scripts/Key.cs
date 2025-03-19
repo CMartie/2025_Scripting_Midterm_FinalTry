@@ -33,30 +33,30 @@ public class Key : MonoBehaviour
     {
         if (other.tag == "Player") //if something runs into this collider it checks for a player tag
         {
-            Player player = other.GetComponent<Player>(); //gets componants from the player script
+            Player player = other.GetComponent<Player>(); //gets componants (player) from the player script
 
-            if (keyColor == KeyColor.Green)
+            if (keyColor == KeyColor.Green) //checks if keycolor is green
             {
-                if (player.hasGreenKey == false)
+                if (player.hasGreenKey == false) // if the color is green it checks if the player does NOT have the green key
                 {
-                    player.hasGreenKey = true;
-                    Destroy(gameObject);
+                    player.hasGreenKey = true; // if the player doesnt have the green key they now have the green key
+                    Destroy(gameObject); // and the key is destoyed in the level
                 }
             }
-            else if (keyColor == KeyColor.Blue)
+            else if (keyColor == KeyColor.Blue) //if the key is NOT green in the above if statement it checks if the key is blue
             {
-                if (player.hasBlueKey == false)
+                if (player.hasBlueKey == false) // if the key is blue and the player does NOT have the blue key
                 {
-                    player.hasBlueKey = true;
-                    Destroy(gameObject);
+                    player.hasBlueKey = true; // they then have the blue key
+                    Destroy(gameObject); // and the blue key is destoyred in the level
                 }
             }
-            else if (keyColor == KeyColor.Red)
+            else if (keyColor == KeyColor.Red) // if the above if statements are not true and the key is neither green nor blue it checks if the key  is red
             {
-                if (player.hasRedKey == false)
+                if (player.hasRedKey == false) // if the key is red it checks if the player does NOT have the red key
                 {
-                    player.hasRedKey = true;
-                    Destroy(gameObject);
+                    player.hasRedKey = true; // if the player does not have the red key the player now has the red key
+                    Destroy(gameObject); // and the key is destroyed in the level
                 }
             }
             

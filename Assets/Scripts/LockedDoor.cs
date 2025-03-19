@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class LockedDoor : MonoBehaviour
 {
-    public KeyColor keyColorRequired;
+    public KeyColor keyColorRequired; //this is declaring the color of the key thats needed per door
 
-    public Transform doorFinalPosition;
+    public Transform doorFinalPosition; // this is the location of the doors final position in level
 
-    public bool isDoorLocked = true;
+    public bool isDoorLocked = true; //this bool checks if the door is locked
 
-    public bool hasBeenOpened = false;
+    public bool hasBeenOpened = false; // this bool checks if the door has been opened
+
+    public AudioSource doorIsOpened;
+
 
 
     private void Start()
@@ -35,9 +38,11 @@ public class LockedDoor : MonoBehaviour
         {
             this.transform.position = doorFinalPosition.position;
         }
-       /* if(hasBeenOpened == true)
+
+        if(hasBeenOpened == true)
         {
-            //play audio
-        }*/
+            doorIsOpened.Play();
+        }
+       
     }
 }
