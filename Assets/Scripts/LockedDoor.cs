@@ -12,36 +12,37 @@ public class LockedDoor : MonoBehaviour
 
     public bool hasBeenOpened = false; // this bool checks if the door has been opened
 
-    public AudioSource doorIsOpened;
+    public AudioSource doorIsOpened; //this is the audio source that plays during a function
 
 
 
     private void Start()
     {
-        if (keyColorRequired == KeyColor.Green)
+        if (keyColorRequired == KeyColor.Green) //check if the keycolor enumerate is green
         {
-            this.GetComponent<MeshRenderer>().material.color = Color.green;
+            this.GetComponent<MeshRenderer>().material.color = Color.green; //if it is then change this game object to green by changing its material component
         }
-        else if (keyColorRequired == KeyColor.Blue)
+        else if (keyColorRequired == KeyColor.Blue) //if it is not green then check if the enumerate is blue
         {
-            this.GetComponent<MeshRenderer>().material.color = Color.blue;
+            this.GetComponent<MeshRenderer>().material.color = Color.blue; //if it is then change this game object to blue by changing its material component
         }
-        else if (keyColorRequired == KeyColor.Red)
+        else if (keyColorRequired == KeyColor.Red) //if the enumerate is not green or blue then check it if is red
         {
-            this.GetComponent<MeshRenderer>().material.color = Color.red;
+            this.GetComponent<MeshRenderer>().material.color = Color.red; //if it is then change this game object to red
         }
     }
 
-    public void OpenDoor()
+    public void OpenDoor() //the name of the fucntion and what is inside of it
     {
-        if(hasBeenOpened == false)
+        if(hasBeenOpened == false) //if the bool hasBeenOpened is false
         {
-            this.transform.position = doorFinalPosition.position;
+            this.transform.position = doorFinalPosition.position; //change this objects position to the before established final loction
+            hasBeenOpened = true; //change the hasBeenOpened bool to true
         }
 
-        if(hasBeenOpened == true)
+        else if(hasBeenOpened == true) //if the hasBeenOpened bool is true
         {
-            doorIsOpened.Play();
+            doorIsOpened.Play(); //then play this audio source
         }
        
     }
